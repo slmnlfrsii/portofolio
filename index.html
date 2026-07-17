@@ -589,32 +589,51 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <div class="contact-right">
       <h3>Kirim Pesan</h3>
 
-      <form action="https://formsubmit.co/salmanaf083@gmail.com" method="POST">
+<form action="https://formsubmit.co/emailanda@gmail.com" method="POST">
 
-        <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
+  <!-- Pengaturan FormSubmit -->
+  <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio">
+  <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://salmanalfarisi.github.io/portfolio/?success=true">
 
-        <div class="form-group">
-          <label>Nama Lengkap</label>
-          <input type="text" name="nama" class="form-control" required>
-        </div>
+  <div class="form-group">
+    <label for="name">Nama Lengkap</label>
+    <input
+      type="text"
+      id="name"
+      name="nama"
+      class="form-control"
+      placeholder="Masukkan nama Anda..."
+      required>
+  </div>
 
-        <div class="form-group">
-          <label>Alamat Email</label>
-          <input type="email" name="email" class="form-control" required>
-        </div>
+  <div class="form-group">
+    <label for="email">Alamat Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="form-control"
+      placeholder="contoh@gmail.com"
+      required>
+  </div>
 
-        <div class="form-group">
-          <label>Pesan</label>
-          <textarea name="pesan" rows="5" class="form-control" required></textarea>
-        </div>
+  <div class="form-group">
+    <label for="message">Pesan</label>
+    <textarea
+      id="message"
+      name="pesan"
+      rows="5"
+      class="form-control"
+      placeholder="Tulis pesan Anda di sini..."
+      required></textarea>
+  </div>
 
-        <button type="submit" class="btn-submit">
-          <i class="fas fa-paper-plane"></i> Kirim Sekarang
-        </button>
+  <button type="submit" class="btn-submit">
+    <i class="fas fa-paper-plane"></i> Kirim Sekarang
+  </button>
 
-      </form>
+</form>
     </div>
 
   </div>
@@ -697,6 +716,21 @@ function showSlide(n) {
   const dots = document.querySelectorAll('.dot');
   dots.forEach(d => d.classList.remove('active'));
   dots[n-1].classList.add('active');
+}
+  const params = new URLSearchParams(window.location.search);
+
+if (params.get("success") === "true") {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = "Pesan berhasil dikirim!";
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+
+  // Menghapus ?success=true dari URL
+  window.history.replaceState({}, document.title, window.location.pathname);
 }
   };
 </script>
