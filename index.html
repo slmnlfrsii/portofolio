@@ -377,11 +377,11 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
       <h1 class="hero-title">SALMAN AL FARISI</h1>
       <div class="hero-typing" id="typing-text"></div>
       <p class="hero-desc">
-        Frontend Developer spesialis website modern, responsif, dan berkinerja tinggi. Saya membantu bisnis Anda tampil profesional di dunia digital.
+        Frontend Developer spesialis website modern, dan responsif. Saya membantu bisnis Anda tampil profesional di dunia digital.
       </p>
       <div class="btn-group">
         <a href="#portfolio" class="btn-main">Lihat Karya</a>
-        <a href="#" class="btn-outline" download><i class="fas fa-download" style="margin-right:8px;"></i> Download CV</a>
+        <a href="assets/img/CV.SALMAN AL FARISI(1).png" class="btn-outline" download><i class="fas fa-download" style="margin-right:8px;"></i> Download CV</a>
       </div>
     </div>
     <div class="hero-img-wrapper">
@@ -428,7 +428,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <!-- TENTANG SAYA -->
     <div class="bio-card">
       <h3 style="margin-bottom:20px; font-family:'Space Grotesk';">Tentang Saya</h3>
-      <p>Saya adalah pengembang web yang berdedikasi dengan pengalaman lebih dari 3 tahun. Saya menggabungkan logika pemrograman dengan seni desain untuk menciptakan produk digital yang berdampak.</p>
+      <p>Saya adalah Lulusan S1 Prodi Sistem Informasi di Universitas Cipasung Tasikmalaya. Saya mampu menggabungkan logika pemrograman dengan seni desain untuk menciptakan produk digital yang berdampak.</p>
       <p>Fokus saya adalah performa, aksesibilitas, dan skalabilitas. Saya terus belajar teknologi terbaru untuk memberikan solusi terbaik.</p>
     </div>
 
@@ -572,10 +572,34 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         <div class="icon-box"><i class="fab fa-instagram"></i></div>
         <div class="item-details">
           <h5>Instagram</h5>
-          <span>@salman_af83</span>
+          <span>@sal_frzi</span>
         </div>
       </div>
-      
+      <form action="https://formsubmit.co/salmanaf083@gmail.com" method="POST">
+
+  <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio">
+  <input type="hidden" name="_captcha" value="false">
+
+  <div class="form-group">
+    <label>Nama Lengkap</label>
+    <input type="text" name="nama" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label>Alamat Email</label>
+    <input type="email" name="email" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label>Pesan</label>
+    <textarea name="pesan" rows="5" class="form-control" required></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit">
+    <i class="fas fa-paper-plane"></i> Kirim Sekarang
+  </button>
+
+</form>
       <div class="contact-item">
         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
         <div class="item-details">
@@ -584,29 +608,6 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         </div>
       </div>
     </div>
- <!-- Kolom Kanan: Form -->
-    <div class="contact-right">
-      <h3>Kirim Pesan</h3>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name">Nama Lengkap</label>
-          <input type="text" id="name" class="form-control" placeholder="Masukkan nama Anda..." required>
-        </div>
-        <div class="form-group">
-          <label for="email">Alamat Email</label>
-          <input type="email" id="email" class="form-control" placeholder="contoh@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Pesan</label>
-          <textarea id="message" rows="5" class="form-control" placeholder="Tulis pesan Anda di sini..." required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">
-          <i class="fas fa-paper-plane"></i> Kirim Sekarang
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Salman Al Farisi. All Rights Reserved.</p>
@@ -685,23 +686,6 @@ function showSlide(n) {
   dots.forEach(d => d.classList.remove('active'));
   dots[n-1].classList.add('active');
 }
-
-// 5. FORM HANDLING
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const btn = document.querySelector('.btn-submit');
-  const originalText = btn.innerText;
-  btn.innerText = "Mengirim...";
-  btn.disabled = true;
-
-  setTimeout(() => {
-    const toast = document.getElementById("toast");
-    toast.className = "show";
-    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-    this.reset();
-    btn.innerText = originalText;
-    btn.disabled = false;
-  }, 1500);
 });
 </script>
 
