@@ -6,11 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="My Portfolio">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -64,7 +62,25 @@ body{
   100% { transform: translate(50px, 50px); }
 }
 
-/* --- 3. NAVBAR --- */
+/* --- 3. NAVBAR & OVERLAY --- */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 nav {
   position: fixed; top: 0; left: 0; width: 100%; padding: 1.2rem 5%;
   display: flex; justify-content: space-between; align-items: center; z-index: 1000;
@@ -97,7 +113,7 @@ nav .logo span { color: var(--primary-light); }
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  padding: 110px 5% 60px 5%; /* Menambahkan padding-top agar tidak tertutup navbar */
+  padding: 110px 5% 60px 5%;
 }
 .hero-container {
   display: flex; align-items: center; justify-content: space-between; max-width: 1200px;
@@ -249,9 +265,7 @@ section { padding: 100px 5%; position: relative; }
   display: block;
 }
 
-.contact-right {
-  padding: 50px 40px;
-}
+.contact-right { padding: 50px 40px; }
 .contact-right h3 {
   font-family: 'Space Grotesk';
   font-size: 1.8rem;
@@ -338,27 +352,32 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 }
 
 @media (max-width: 768px) {
-  #hero {
-    padding-top: 120px; /* Ruang aman ekstra di tampilan mobile */
-  }
-  .hero-container {
-    flex-direction: column-reverse;
-    gap: 20px;
-  }
-  .hero-img-wrapper { 
-    flex: 0 0 auto; 
-    width: 100%;
-    max-width: 260px;
-    margin: 0 auto;
-  }
-  .hero-img-bg, .hero-img { 
-    width: 240px; 
-    height: 240px; 
-  }
+  #hero { padding-top: 120px; }
+  .hero-container { flex-direction: column-reverse; gap: 20px; }
+  .hero-img-wrapper { flex: 0 0 auto; width: 100%; max-width: 260px; margin: 0 auto; }
+  .hero-img-bg, .hero-img { width: 240px; height: 240px; }
 
-  .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--bg-dark); flex-direction: column; align-items: center; justify-content: center; transition: 0.4s; border-top: 1px solid var(--glass-border); }
+  /* SIDEBAR MOBILE STYLING */
+  .nav-menu { 
+    position: fixed; 
+    top: 0; 
+    right: -280px; 
+    width: 280px; 
+    height: 100vh; 
+    background: #0f172a; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    padding: 80px 2rem 2rem 2rem;
+    gap: 1.8rem;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    border-left: 1px solid var(--glass-border); 
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+  }
   .nav-menu.active { right: 0; }
-  .hamburger { display: block; }
+  .hamburger { display: block; z-index: 1200; }
+  
   .timeline::before { left: 20px; }
   .t-item { justify-content: flex-start !important; margin-left: 50px; }
   .t-content { width: 100%; }
@@ -368,13 +387,13 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 </head>
 <body>
 
-<!-- Scroll Progress -->
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
 <div class="scroll-progress" id="progressBar"></div>
-<!-- Background Orbs -->
+
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
-<!-- NAVBAR -->
 <nav>
   <a href="#hero" class="logo">SALMAN<span>.COM</span></a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
@@ -387,7 +406,6 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-container">
     <div class="hero-text">
@@ -395,8 +413,8 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
       <h1 class="hero-title">SALMAN AL FARISI</h1>
       <div class="hero-typing" id="typing-text"></div>
       <p class="hero-desc">
-  Fresh Graduate Sistem Informasi dengan fokus pada Frontend Development. Berpengalaman membangun antarmuka web yang modern, interaktif, dan responsif.
-</p>
+        Fresh Graduate Sistem Informasi dengan fokus pada Frontend Development. Berpengalaman membangun antarmuka web yang modern, interaktif, dan responsif.
+      </p>
       <div class="btn-group">
         <a href="#portfolio" class="btn-main">Lihat Karya</a>
         <a href="https://slmnlfrsii.github.io/portofolio/assets/img/CV.SALMAN%20AL%20FARISI%20%20(1).png"
@@ -413,7 +431,6 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="section-header reveal">
     <h2 class="section-title">Layanan Saya</h2>
@@ -421,24 +438,23 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
   <div class="services-grid">
     <div class="service-card reveal">
-  <div class="service-icon"><i class="fas fa-code"></i></div>
-  <h3>Web Development</h3>
-  <p>Mengembangkan antarmuka website modern menggunakan HTML, CSS, JavaScript, dan framework kekinian dengan struktur kode yang rapi dan responsif.</p>
-</div>
-<div class="service-card reveal">
-  <div class="service-icon"><i class="fab fa-figma"></i></div>
-  <h3>UI/UX Design</h3>
-  <p>Merancang wireframe, desain antarmuka (UI), dan prototipe interaktif menggunakan Figma yang berfokus pada kenyamanan pengguna (UX).</p>
-</div>
-<div class="service-card reveal">
-  <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-  <h3>Responsive Design</h3>
-  <p>Memastikan tampilan website beradaptasi dengan sempurna di berbagai ukuran layar, mulai dari smartphone hingga desktop.</p>
-</div>
+      <div class="service-icon"><i class="fas fa-code"></i></div>
+      <h3>Web Development</h3>
+      <p>Mengembangkan antarmuka website modern menggunakan HTML, CSS, JavaScript, dan framework kekinian dengan struktur kode yang rapi dan responsif.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fab fa-figma"></i></div>
+      <h3>UI/UX Design</h3>
+      <p>Merancang wireframe, desain antarmuka (UI), dan prototipe interaktif menggunakan Figma yang berfokus pada kenyamanan pengguna (UX).</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+      <h3>Responsive Design</h3>
+      <p>Memastikan tampilan website beradaptasi dengan sempurna di berbagai ukuran layar, mulai dari smartphone hingga desktop.</p>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT & SKILLS -->
 <section id="about">
   <div class="section-header reveal">
     <h2 class="section-title">Tentang & Keahlian</h2>
@@ -446,21 +462,19 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
   
   <div class="about-content reveal">
-    <!-- TENTANG SAYA -->
     <div class="bio-card">
       <h3 style="margin-bottom:20px; font-family:'Space Grotesk';">Tentang Saya</h3>
       <p>Saya adalah Lulusan S1 Prodi Sistem Informasi di Universitas Cipasung Tasikmalaya yang berfokus di bidang Frontend Development dan UI/UX Design. Saya menyukai proses pembuatan alur antarmuka pengguna hingga mewujudkannya menjadi website yang fungsional.</p>
       <p>Fokus saya pada penulisan kode yang rapi, tampilan yang responsif, serta terus mengasah kemampuan teknis untuk siap berkarya secara profesional.</p>
     </div>
 
-    <!-- KEAHLIAN / TECH STACK -->
     <div class="skills-wrapper">
-      <h3 style="margin-bottom:20px;"><i class="fas fa-layer-group" style="color:var(--accent)"></i> Tech Stack</h3>
+      <h3 style="margin-bottom:20px;"><i class="fas fa-layer-group" style="color:var(--accent)"></i>Bahasa pemrograman & Framework</h3>
       <div class="skills-grid">
         <div class="skill-box"><i class="fab fa-html5"></i><span>HTML</span></div>
         <div class="skill-box"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
         <div class="skill-box"><i class="fab fa-js"></i><span>JavaScript</span></div>
-         <div class="skill-box"><i class="fab fa-php"></i><span>PHP</span></div>
+        <div class="skill-box"><i class="fab fa-php"></i><span>PHP</span></div>
         <div class="skill-box"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></div>
         <div class="skill-box"><i class="fab fa-laravel"></i><span>Laravel</span></div>
         <div class="skill-box"><i class="fab fa-figma"></i><span>Figma</span></div>
@@ -480,7 +494,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
       <div class="t-content">
         <span class="t-date">2023 - Sekarang</span>
         <h4 class="t-role">Fullstack Developer</h4>
-        <p>Membangun Web & Aplikasi android, membuat database Mysql, mengkoneksikan web & aplikasi menggunakan res API, serta memastikan kualitas kode di seluruh stack (Php Native, Laravel) tetap rapi.</p>
+        <p>Membangun Web & Aplikasi android, membuat database Mysql, mengkoneksikan web & aplikasi menggunakan rest API, serta memastikan kualitas kode di seluruh stack (Php Native, Laravel) tetap rapi.</p>
       </div>
     </div>
     <div class="t-item reveal">
@@ -494,24 +508,19 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
 </section>
 
-
-<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header reveal">
     <h2 class="section-title">Portfolio Terbaru</h2>
     <div class="section-line"></div>
   </div>
   <div class="portfolio-grid">
-    <!-- Project 1 -->
     <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/ds1.png" -->
       <img src="assets/img/prjct1.png" alt="Project 1">
       <div class="p-overlay">
         <h4>Rental alat outdoor - User</h4>
         <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span><span>Php native</span></div>
       </div>
     </div>
-    <!-- Project 2 -->
     <div class="p-card reveal">
       <img src="assets/img/prjct2.png" alt="Project 2">
       <div class="p-overlay">
@@ -522,19 +531,17 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <div class="p-card reveal">
       <img src="assets/img/g.png" alt="Project 4">
       <div class="p-overlay">
-        <h4>Dashboard Admin</h4>
-         <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span><span>Laravel</span></div>
+        <h4>Dashboard Inventory</h4>
+        <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span><span>Laravel</span></div>
       </div>
     </div>
-    <!-- Project 3 -->
     <div class="p-card reveal">
       <img src="assets/img/ds1.png" alt="Project 5">
       <div class="p-overlay">
         <h4>Web Informasi Desa</h4>
-       <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span><span>Laravel</span></div>
+        <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span><span>Laravel</span></div>
       </div>
     </div>
-    
     <div class="p-card reveal">
       <img src="assets/img/ds2.png" alt="Project 4">
       <div class="p-overlay">
@@ -542,19 +549,16 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span><span>Laravel</span></div>
       </div>
     </div>
-    
-    <!-- Project 5 -->
-        <div class="p-card reveal">
+    <div class="p-card reveal">
       <img src="assets/img/lp.png" alt="Project 3">
       <div class="p-overlay">
         <h4>Company Profile</h4>
         <div class="p-tags"><span>HTML</span><span>GSAP</span><span>CSS</span><span>Js</span></div>
       </div>
     </div>
-  </section>
-    
+  </div>
+</section>
 
-<!-- CONTACT (REVISED) -->
 <section id="contact">
   <div class="section-header reveal">
     <h2 class="section-title">Hubungi Saya</h2>
@@ -562,7 +566,6 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
   
   <div class="contact-wrapper reveal">
-    <!-- Kolom Kiri: Info -->
     <div class="contact-left">
       <h3>Ayo Diskusi</h3>
       <p>Silakan isi formulir di samping atau hubungi saya melalui kontak di bawah ini untuk kolaborasi.</p>
@@ -579,7 +582,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         <div class="icon-box"><i class="fab fa-instagram"></i></div>
         <div class="item-details">
           <h5>Instagram</h5>
-          <span>@Sal_Frzi</span>
+          <span>@sal_frzi</span>
         </div>
       </div>
       
@@ -591,7 +594,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         </div>
       </div>
     </div>
- <!-- Kolom Kanan: Form -->
+
     <div class="contact-right">
       <h3>Kirim Pesan</h3>
       <form id="contactForm">
@@ -614,7 +617,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     </div>
   </div>
 </section>
-<!-- FOOTER -->
+
 <footer>
   <p>© 2026 Salman Al Farisi. All Rights Reserved.</p>
   <div class="social-links">
@@ -624,16 +627,13 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
 </footer>
 
-<!-- UTILS -->
 <div id="toast">Pesan berhasil dikirim!</div>
 <div id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
 
-
-<!-- SCRIPTS -->
 <script>
 // 1. TYPING EFFECT
 const textElement = document.getElementById('typing-text');
-const words = ["Frontend Developer", "UI/UX Enthusiast", "Web Designer"];
+const words = ["Frontend Developer", "UI/UX Designer"];
 let wordIndex = 0; let charIndex = 0; let isDeleting = false;
 
 function typeEffect() {
@@ -675,25 +675,32 @@ window.onscroll = function() {
   });
 };
 
-// 3. NAVBAR TOGGLE
+// 3. NAVBAR TOGGLE & SIDEBAR HANDLER
 function toggleMenu() {
-  document.querySelector('.nav-menu').classList.toggle('active');
+  const navMenu = document.querySelector('.nav-menu');
+  const overlay = document.getElementById('navOverlay');
   const icon = document.querySelector('.hamburger i');
-  icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+
+  navMenu.classList.toggle('active');
+  overlay.classList.toggle('active');
+  
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
 }
+
+// Tutup sidebar otomatis saat menu diklik
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    const navMenu = document.querySelector('.nav-menu');
+    if (navMenu.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
+});
 
 function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
 
-// 4. TESTIMONIAL SLIDER
-function showSlide(n) {
-  document.getElementById('slide-1').style.display = n === 1 ? 'block' : 'none';
-  document.getElementById('slide-2').style.display = n === 2 ? 'block' : 'none';
-  const dots = document.querySelectorAll('.dot');
-  dots.forEach(d => d.classList.remove('active'));
-  dots[n-1].classList.add('active');
-}
-
-// 5. FORM HANDLING
+// 4. FORM HANDLING
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = document.querySelector('.btn-submit');
