@@ -119,10 +119,10 @@ nav .logo span { color: var(--primary-light); }
   display: flex; align-items: center; justify-content: space-between; max-width: 1200px;
   width: 100%; flex-wrap: wrap-reverse; gap: 40px;
 }
-.hero-text { flex: 1; min-width: 320px; }
+.hero-text { flex: 1; min-width: 280px; }
 .hero-greeting { color: var(--primary-light); font-weight: 600; letter-spacing: 2px; margin-bottom: 15px; display: block; }
 .hero-title {
-  font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700;
   line-height: 1.1; margin-bottom: 10px; background: linear-gradient(to right, #fff, #94a3b8);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
@@ -159,7 +159,7 @@ section { padding: 100px 5%; position: relative; }
 .section-line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); margin: 0 auto; border-radius: 2px; }
 
 /* --- 6. SERVICES --- */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
 .service-card {
   background: var(--bg-card); border: 1px solid var(--glass-border); padding: 40px 30px;
   border-radius: 20px; text-align: center; transition: 0.3s; backdrop-filter: blur(10px);
@@ -175,7 +175,7 @@ section { padding: 100px 5%; position: relative; }
 .bio-card p { margin-bottom: 20px; color: var(--text-gray); }
 
 .skills-wrapper { background: var(--bg-card); border: 1px solid var(--glass-border); padding: 40px; border-radius: 24px; backdrop-filter: blur(10px); height: 100%; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 20px; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 20px; }
 .skill-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 20px 10px; border-radius: 16px; text-align: center; transition: all 0.3s ease; }
 .skill-box:hover { background: rgba(30, 58, 138, 0.2); border-color: var(--primary-light); transform: translateY(-5px); }
 .skill-box i { font-size: 2.5rem; color: var(--text-gray); margin-bottom: 10px; display: block; transition: 0.3s; }
@@ -195,7 +195,7 @@ section { padding: 100px 5%; position: relative; }
 .t-role { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--text-white); }
 
 /* --- 9. PORTFOLIO --- */
-.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
 .p-card { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; border: 1px solid var(--glass-border); }
 .p-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 .p-overlay { position: absolute; inset: 0; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(4px); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; padding: 20px; text-align: center; }
@@ -259,10 +259,14 @@ section { padding: 100px 5%; position: relative; }
   color: var(--text-white);
   margin-bottom: 4px;
 }
-.item-details span {
-  font-size: 0.9rem;
+.contact-link {
   color: var(--text-gray);
-  display: block;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+.contact-link:hover {
+  color: var(--accent);
 }
 
 .contact-right { padding: 50px 40px; }
@@ -394,13 +398,11 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
-<!-- NAVBAR -->
 <nav>
   <a href="#hero" class="logo">My Portofolio</a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- NAV MENU (Dikeluarkan dari <nav> agar z-index: 1100 dapat berfungsi penuh di atas overlay) -->
 <ul class="nav-menu">
   <li><a href="#hero">Beranda</a></li>
   <li><a href="#services">Layanan</a></li>
@@ -573,31 +575,31 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
       <h3>Ayo Diskusi</h3>
       <p>Silakan isi formulir di samping atau hubungi saya melalui kontak di bawah ini untuk kolaborasi.</p>
       
-     <div class="contact-item">
-  <div class="icon-box"><i class="fas fa-envelope"></i></div>
-  <div class="item-details">
-    <h5>Email</h5>
-    <a href="mailto:salmanaf083@gmail.com" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-gray)'">
-      salmanaf083@gmail.com
-    </a>
-  </div>
-</div>
+      <div class="contact-item">
+        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+        <div class="item-details">
+          <h5>Email</h5>
+          <a href="mailto:salmanaf083@gmail.com" class="contact-link">
+            salmanaf083@gmail.com
+          </a>
+        </div>
+      </div>
       
-   <div class="contact-item">
-  <div class="icon-box"><i class="fab fa-instagram"></i></div>
-  <div class="item-details">
-    <h5>Instagram</h5>
-    <a href="https://instagram.com/sal_frzi" target="_blank" rel="noopener noreferrer" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-gray)'">
-      @sal_frzi
-    </a>
-  </div>
-</div>
+      <div class="contact-item">
+        <div class="icon-box"><i class="fab fa-instagram"></i></div>
+        <div class="item-details">
+          <h5>Instagram</h5>
+          <a href="https://instagram.com/sal_frzi" target="_blank" rel="noopener noreferrer" class="contact-link">
+            @sal_frzi
+          </a>
+        </div>
+      </div>
       
       <div class="contact-item">
         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
         <div class="item-details">
           <h5>Lokasi</h5>
-          <span>Tasikmalaya, Jawabarat, Indonesia</span>
+          <span style="color: var(--text-gray); font-size: 0.9rem;">Tasikmalaya, Jawabarat, Indonesia</span>
         </div>
       </div>
     </div>
@@ -630,7 +632,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   <div class="social-links">
     <a href="#"><i class="fab fa-github"></i></a>
     <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="https://instagram.com/sal_frzi" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
 </footer>
 
