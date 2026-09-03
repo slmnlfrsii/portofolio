@@ -394,17 +394,20 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
+<!-- NAVBAR -->
 <nav>
-  <a href="#hero" class="logo">SALMAN<span>.id</span></a>
+  <a href="#hero" class="logo">My Portofolio</a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-  <ul class="nav-menu">
-    <li><a href="#hero">Beranda</a></li>
-    <li><a href="#services">Layanan</a></li>
-    <li><a href="#about">Tentang</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#contact">Kontak</a></li>
-  </ul>
 </nav>
+
+<!-- NAV MENU (Dikeluarkan dari <nav> agar z-index: 1100 dapat berfungsi penuh di atas overlay) -->
+<ul class="nav-menu">
+  <li><a href="#hero">Beranda</a></li>
+  <li><a href="#services">Layanan</a></li>
+  <li><a href="#about">Tentang</a></li>
+  <li><a href="#portfolio">Portfolio</a></li>
+  <li><a href="#contact">Kontak</a></li>
+</ul>
 
 <section id="hero">
   <div class="hero-container">
@@ -570,21 +573,25 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
       <h3>Ayo Diskusi</h3>
       <p>Silakan isi formulir di samping atau hubungi saya melalui kontak di bawah ini untuk kolaborasi.</p>
       
-      <div class="contact-item">
-        <div class="icon-box"><i class="fas fa-envelope"></i></div>
-        <div class="item-details">
-          <h5>Email</h5>
-          <span>salmanaf083@gmail.com</span>
-        </div>
-      </div>
+     <div class="contact-item">
+  <div class="icon-box"><i class="fas fa-envelope"></i></div>
+  <div class="item-details">
+    <h5>Email</h5>
+    <a href="mailto:salmanaf083@gmail.com" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-gray)'">
+      salmanaf083@gmail.com
+    </a>
+  </div>
+</div>
       
-      <div class="contact-item">
-        <div class="icon-box"><i class="fab fa-instagram"></i></div>
-        <div class="item-details">
-          <h5>Instagram</h5>
-          <span>@sal_frzi</span>
-        </div>
-      </div>
+   <div class="contact-item">
+  <div class="icon-box"><i class="fab fa-instagram"></i></div>
+  <div class="item-details">
+    <h5>Instagram</h5>
+    <a href="https://instagram.com/sal_frzi" target="_blank" rel="noopener noreferrer" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-gray)'">
+      @sal_frzi
+    </a>
+  </div>
+</div>
       
       <div class="contact-item">
         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
