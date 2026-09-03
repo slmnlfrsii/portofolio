@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -93,7 +92,13 @@ nav .logo span { color: var(--primary-light); }
 .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text-white); }
 
 /* --- 4. HERO SECTION --- */
-#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 5%; }
+#hero { 
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 110px 5% 60px 5%; /* Menambahkan padding-top agar tidak tertutup navbar */
+}
 .hero-container {
   display: flex; align-items: center; justify-content: space-between; max-width: 1200px;
   width: 100%; flex-wrap: wrap-reverse; gap: 40px;
@@ -182,22 +187,21 @@ section { padding: 100px 5%; position: relative; }
 .p-card:hover .p-overlay { opacity: 1; }
 .p-tags span { font-size: 0.8rem; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; margin: 5px; display: inline-block; color: var(--accent); }
 
-/* --- 10. CONTACT (REVISED - RAPI) --- */
+/* --- 10. CONTACT --- */
 .contact-wrapper {
   max-width: 1000px;
   margin: 0 auto;
   background: var(--bg-card);
   border: 1px solid var(--glass-border);
   border-radius: 30px;
-  overflow: hidden; /* Penting agar border radius terjaga di anak elemen */
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Kiri 40%, Kanan 60% */
+  grid-template-columns: 1fr 1.2fr;
   backdrop-filter: blur(15px);
 }
 
-/* Kolom Kiri: Info Kontak */
 .contact-left {
-  background: rgba(15, 23, 42, 0.6); /* Sedikit lebih gelap */
+  background: rgba(15, 23, 42, 0.6);
   padding: 50px 40px;
   display: flex;
   flex-direction: column;
@@ -245,7 +249,6 @@ section { padding: 100px 5%; position: relative; }
   display: block;
 }
 
-/* Kolom Kanan: Form */
 .contact-right {
   padding: 50px 40px;
 }
@@ -305,7 +308,6 @@ section { padding: 100px 5%; position: relative; }
 }
 .btn-submit:active { transform: translateY(0); }
 
-
 /* --- TOAST --- */
 #toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 17px; border-left: 5px solid var(--accent); }
 #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
@@ -333,11 +335,27 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   .contact-left { border-right: none; border-bottom: 1px solid var(--glass-border); padding: 40px 20px; }
   .contact-right { padding: 40px 20px; }
   .about-content { grid-template-columns: 1fr; }
-  .hero-img-wrapper { flex: 0 0 300px; }
-  .hero-img-bg, .hero-img { width: 280px; height: 280px; }
 }
 
 @media (max-width: 768px) {
+  #hero {
+    padding-top: 120px; /* Ruang aman ekstra di tampilan mobile */
+  }
+  .hero-container {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .hero-img-wrapper { 
+    flex: 0 0 auto; 
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .hero-img-bg, .hero-img { 
+    width: 240px; 
+    height: 240px; 
+  }
+
   .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--bg-dark); flex-direction: column; align-items: center; justify-content: center; transition: 0.4s; border-top: 1px solid var(--glass-border); }
   .nav-menu.active { right: 0; }
   .hamburger { display: block; }
@@ -361,11 +379,11 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   <a href="#hero" class="logo">SALMAN<span>.COM</span></a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
   <ul class="nav-menu">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#hero">Beranda</a></li>
+    <li><a href="#services">Layanan</a></li>
+    <li><a href="#about">Tentang</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Kontak</a></li>
   </ul>
 </nav>
 
@@ -377,8 +395,8 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
       <h1 class="hero-title">SALMAN AL FARISI</h1>
       <div class="hero-typing" id="typing-text"></div>
       <p class="hero-desc">
-        Frontend Developer spesialis website modern, dan responsif. Saya membantu bisnis Anda tampil profesional di dunia digital.
-      </p>
+  Fresh Graduate Sistem Informasi dengan fokus pada Frontend Development. Berpengalaman membangun antarmuka web yang modern, interaktif, dan responsif.
+</p>
       <div class="btn-group">
         <a href="#portfolio" class="btn-main">Lihat Karya</a>
         <a href="https://slmnlfrsii.github.io/portofolio/assets/img/CV.SALMAN%20AL%20FARISI%20%20(1).png"
@@ -390,7 +408,6 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     </div>
     <div class="hero-img-wrapper">
       <div class="hero-img-bg"></div>
-      <!-- GANTI DENGAN FOTO ANDA: src="assets/img/salman.png" -->
       <img src="assets/img/salman.png" alt="Salman" class="hero-img">
     </div>
   </div>
@@ -404,20 +421,21 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   </div>
   <div class="services-grid">
     <div class="service-card reveal">
-      <div class="service-icon"><i class="fas fa-code"></i></div>
-      <h3>Web Development</h3>
-      <p>Membangun website statis dan dinamis dengan kode yang bersih, cepat, dan SEO-friendly.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-      <h3>UI/UX Design</h3>
-      <p>Merancang antarmuka yang estetis dan memastikan pengalaman pengguna yang nyaman.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-      <h3>Responsive Design</h3>
-      <p>Memastikan website Anda terlihat sempurna di semua perangkat, mulai dari HP hingga Desktop.</p>
-    </div>
+      <div class="service-card reveal">
+  <div class="service-icon"><i class="fas fa-code"></i></div>
+  <h3>Web Development</h3>
+  <p>Mengembangkan antarmuka website modern menggunakan HTML, CSS, JavaScript, dan framework kekinian dengan struktur kode yang rapi dan responsif.</p>
+</div>
+<div class="service-card reveal">
+  <div class="service-icon"><i class="fab fa-figma"></i></div>
+  <h3>UI/UX Design</h3>
+  <p>Merancang wireframe, desain antarmuka (UI), dan prototipe interaktif menggunakan Figma yang berfokus pada kenyamanan pengguna (UX).</p>
+</div>
+<div class="service-card reveal">
+  <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+  <h3>Responsive Design</h3>
+  <p>Memastikan tampilan website beradaptasi dengan sempurna di berbagai ukuran layar, mulai dari smartphone hingga desktop.</p>
+</div>
   </div>
 </section>
 
@@ -432,21 +450,18 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <!-- TENTANG SAYA -->
     <div class="bio-card">
       <h3 style="margin-bottom:20px; font-family:'Space Grotesk';">Tentang Saya</h3>
-      <p>Saya adalah Lulusan S1 Prodi Sistem Informasi di Universitas Cipasung Tasikmalaya. Saya mampu menggabungkan logika pemrograman dengan seni desain untuk menciptakan produk digital yang berdampak.</p>
-      <p>Fokus saya adalah performa, aksesibilitas, dan skalabilitas. Saya terus belajar teknologi terbaru untuk memberikan solusi terbaik.</p>
+      <p>Saya adalah Lulusan S1 Prodi Sistem Informasi di Universitas Cipasung Tasikmalaya yang berfokus di bidang Frontend Development dan UI/UX Design. Saya menyukai proses pembuatan alur antarmuka pengguna hingga mewujudkannya menjadi website yang fungsional.</p>
+      <p>Fokus saya pada penulisan kode yang rapi, tampilan yang responsif, serta terus mengasah kemampuan teknis untuk siap berkarya secara profesional.</p>
     </div>
 
     <!-- KEAHLIAN / TECH STACK -->
     <div class="skills-wrapper">
       <h3 style="margin-bottom:20px;"><i class="fas fa-layer-group" style="color:var(--accent)"></i> Tech Stack</h3>
       <div class="skills-grid">
-        <div class="skill-box"><i class="fab fa-html5"></i><span>HTML5</span></div>
-        <div class="skill-box"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+        <div class="skill-box"><i class="fab fa-html5"></i><span>HTML</span></div>
+        <div class="skill-box"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
         <div class="skill-box"><i class="fab fa-js"></i><span>JavaScript</span></div>
         <div class="skill-box"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></div>
-        <div class="skill-box"><i class="fab fa-react"></i><span>React</span></div>
-        <div class="skill-box"><i class="fab fa-git-alt"></i><span>Git</span></div>
-        <div class="skill-box"><i class="fas fa-code"></i><span>VS Code</span></div>
         <div class="skill-box"><i class="fab fa-figma"></i><span>Figma</span></div>
       </div>
     </div>
@@ -463,267 +478,142 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <div class="t-item reveal">
       <div class="t-dot"></div>
       <div class="t-content">
-        <span class="t-date">2023 - 2024</span>
-        <h4 class="t-role">UI/UX Developer</h4>
-        <p>Mendesain antarmuka web dan mobile yang responsif serta melakukan prototyping untuk meningkatkan pengalaman pengguna.</p>
-      </div>
-    </div>
-    <div class="t-item reveal">
-      <div class="t-dot"></div>
-      <div class="t-content">
-        <span class="t-date">2023 - sekarang</span>
-        <h4 class="t-role">Web Developer</h4>
-        <p>Belajar dan mengimplementasikan front-end development dengan HTML, CSS, dan JavaScript, serta mendukung proyek internal tim IT.</p>
+        <span class="t-date">2023 - Sekarang</span>
+        <h3 class="t-role">Freelance Frontend Developer</h3>
+        <p style="color: var(--text-gray);">Membangun berbagai proyek web antarmuka pengguna responsif sesuai kebutuhan klien.</p>
       </div>
     </div>
   </div>
 </section>
 
-
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header reveal">
-    <h2 class="section-title">Portfolio Terbaru</h2>
+    <h2 class="section-title">Portfolio Saya</h2>
     <div class="section-line"></div>
   </div>
   <div class="portfolio-grid">
-    <!-- Project 1 -->
     <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/ds1.png" -->
-      <img src="assets/img/ho1.png" alt="Project 1">
+      <img src="https://via.placeholder.com/600x450" alt="Project 1">
       <div class="p-overlay">
-        <h4>E-Commerce Platform</h4>
-        <div class="p-tags"><span>HTML</span><span>CSS</span><span>Js</span></div>
+        <h3>Project Website</h3>
+        <p>Aplikasi web interaktif dengan desain modern.</p>
+        <div class="p-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
       </div>
     </div>
-    <!-- Project 2 -->
-    <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/ho1.png" -->
-      <img src="assets/img/ho2.png" alt="Project 2">
-      <div class="p-overlay">
-        <h4>Dashboard Admin</h4>
-        <div class="p-tags"><span>Bootstrap 5</span><span>Chart.js</span></div>
-      </div>
-    </div>
-    <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/ho1.png" -->
-      <img src="assets/img/g.png" alt="Project 4">
-      <div class="p-overlay">
-        <h4>Dashboard Admin</h4>
-        <div class="p-tags"><span>Bootstrap 5</span><span>Chart.js</span></div>
-      </div>
-    </div>
-    <!-- Project 3 -->
-    <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/ds2.png" -->
-      <img src="assets/img/lp.png" alt="Project 3">
-      <div class="p-overlay">
-        <h4>Company Profile</h4>
-        <div class="p-tags"><span>GSAP</span><span>CSS</span></div>
-      </div>
-    </div>
-    <!-- Project 5 -->
-    <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/g.png" -->
-      <img src="assets/img/ds1.png" alt="Project 5">
-      <div class="p-overlay">
-        <h4>Web Desa</h4>
-        <div class="p-tags"><span>GSAP</span><span>CSS</span></div>
-      </div>
-    </div>
-    
-    <div class="p-card reveal">
-      <!-- GANTI DENGAN LINK FOTO ANDA: src="assets/img/ho1.png" -->
-      <img src="assets/img/ds2.png" alt="Project 4">
-      <div class="p-overlay">
-        <h4>Dashboard Admin</h4>
-        <div class="p-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-      </div>
-    </div>
-  </section>
-    
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-header reveal">
     <h2 class="section-title">Hubungi Saya</h2>
     <div class="section-line"></div>
   </div>
-
   <div class="contact-wrapper reveal">
-
-    <!-- KIRI -->
     <div class="contact-left">
-      <h3>Ayo Diskusi</h3>
-      <p>Silakan isi formulir di samping atau hubungi saya melalui kontak di bawah ini untuk kolaborasi.</p>
-
+      <h3>Mari Berdiskusi</h3>
+      <p>Tertarik bekerjasama atau punya pertanyaan? Jangan ragu untuk menghubungi saya.</p>
       <div class="contact-item">
         <div class="icon-box"><i class="fas fa-envelope"></i></div>
         <div class="item-details">
           <h5>Email</h5>
-          <a href="mailto:salmanaf083@gmail.com">salmanaf083@gmail.com</a>
+          <span>salman@example.com</span>
         </div>
       </div>
-
-      <div class="contact-item">
-        <div class="icon-box"><i class="fab fa-instagram"></i></div>
-        <div class="item-details">
-          <h5>Instagram</h5>
-          <a href="https://instagram.com/sal_frzi" target="_blank">@sal_frzi</a>
-        </div>
-      </div>
-
       <div class="contact-item">
         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
         <div class="item-details">
           <h5>Lokasi</h5>
-          <span>Tasikmalaya, Jawa Barat, Indonesia</span>
+          <span>Tasikmalaya, Indonesia</span>
         </div>
       </div>
     </div>
-
-    <!-- KANAN -->
     <div class="contact-right">
       <h3>Kirim Pesan</h3>
-
-      <form action="https://formsubmit.co/salmanaf083@gmail.com" method="POST">
-
-        <!-- FormSubmit -->
-        <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio">
-        <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next"
-      value="https://slmnlfrsii.github.io/portofolio/?success=true">
-
+      <form id="contactForm">
         <div class="form-group">
           <label for="name">Nama Lengkap</label>
-          <input
-            type="text"
-            id="name"
-            name="nama"
-            class="form-control"
-            placeholder="Masukkan nama Anda..."
-            required>
+          <input type="text" id="name" class="form-control" placeholder="Nama Anda" required>
         </div>
-
         <div class="form-group">
-          <label for="email">Alamat Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            placeholder="contoh@gmail.com"
-            required>
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="email@domain.com" required>
         </div>
-
         <div class="form-group">
           <label for="message">Pesan</label>
-          <textarea
-            id="message"
-            name="pesan"
-            rows="5"
-            class="form-control"
-            placeholder="Tulis pesan Anda di sini..."
-            required></textarea>
+          <textarea id="message" rows="4" class="form-control" placeholder="Tuliskan pesan Anda..." required></textarea>
         </div>
-
         <button type="submit" class="btn-submit">
-          <i class="fas fa-paper-plane"></i> Kirim Sekarang
+          <span>Kirim Pesan</span>
+          <i class="fas fa-paper-plane"></i>
         </button>
-
       </form>
     </div>
-
   </div>
 </section>
+
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Salman Al Farisi. All Rights Reserved.</p>
+  <p>&copy; 2026 Salman Al Farisi. All rights reserved.</p>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
 </footer>
 
-<!-- UTILS -->
-<div id="toast">Pesan berhasil dikirim!</div>
+<!-- BACK TO TOP & TOAST -->
 <div id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
+<div id="toast">Pesan berhasil dikirim!</div>
 
-
-<!-- SCRIPTS -->
 <script>
-// 1. TYPING EFFECT
-const textElement = document.getElementById('typing-text');
-const words = ["Frontend Developer", "UI/UX Enthusiast", "Web Designer"];
-let wordIndex = 0; let charIndex = 0; let isDeleting = false;
-
-function typeEffect() {
-  const currentWord = words[wordIndex];
-  if (isDeleting) { textElement.textContent = currentWord.substring(0, charIndex - 1); charIndex--; } 
-  else { textElement.textContent = currentWord.substring(0, charIndex + 1); charIndex++; }
-  let typeSpeed = isDeleting ? 50 : 100;
-  if (!isDeleting && charIndex === currentWord.length) { typeSpeed = 2000; isDeleting = true; } 
-  else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; typeSpeed = 500; }
-  setTimeout(typeEffect, typeSpeed);
-}
-document.addEventListener('DOMContentLoaded', typeEffect);
-
-// 2. SCROLL REVEAL & PROGRESS
-const revealElements = document.querySelectorAll('.reveal');
-const revealCallback = (entries, observer) => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
-};
-const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.15 });
-revealElements.forEach(el => revealObserver.observe(el));
-
-window.onscroll = function() {
-  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  let scrolled = (winScroll / height) * 100;
-  document.getElementById("progressBar").style.width = scrolled + "%";
-  
-  if (winScroll > 300) document.getElementById("backToTop").classList.add("show");
-  else document.getElementById("backToTop").classList.remove("show");
-  
-  let current = '';
-  document.querySelectorAll('section').forEach(sec => {
-    const sectionTop = sec.offsetTop;
-    if (winScroll >= sectionTop - 150) current = sec.getAttribute('id');
-  });
-  document.querySelectorAll('.nav-menu a').forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href').includes(current)) a.classList.add('active');
-  });
-};
-
-// 3. NAVBAR TOGGLE
+// Hamburger Menu Toggle
 function toggleMenu() {
-  document.querySelector('.nav-menu').classList.toggle('active');
-  const icon = document.querySelector('.hamburger i');
-  icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+  const navMenu = document.querySelector('.nav-menu');
+  navMenu.classList.toggle('active');
 }
 
-function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+// Scroll Progress & Back To Top Button
+window.onscroll = function() {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById("progressBar").style.width = scrolled + "%";
 
-// 4. TESTIMONIAL SLIDER
-function showSlide(n) {
-  document.getElementById('slide-1').style.display = n === 1 ? 'block' : 'none';
-  document.getElementById('slide-2').style.display = n === 2 ? 'block' : 'none';
-  const dots = document.querySelectorAll('.dot');
-  dots.forEach(d => d.classList.remove('active'));
-  dots[n-1].classList.add('active');
+  const backToTop = document.getElementById("backToTop");
+  if (winScroll > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+
+  // Scroll Reveal Activation
+  const reveals = document.querySelectorAll(".reveal");
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const elementTop = reveals[i].getBoundingClientRect().top;
+    const elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-  const params = new URLSearchParams(window.location.search);
 
-if (params.get("success") === "true") {
+// Form Submit Handling
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
   const toast = document.getElementById("toast");
-
-  toast.textContent = "Pesan berhasil dikirim!";
-  toast.classList.add("show");
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3000);
-
-  // Menghapus ?success=true dari URL
-  window.history.replaceState({}, document.title, window.location.pathname);
-}
-  
+  toast.className = "show";
+  setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+  this.reset();
+});
 </script>
-
 </body>
 </html>
