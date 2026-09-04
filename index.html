@@ -6,9 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="My Portfolio">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -97,7 +99,7 @@ nav {
   justify-content: space-between; 
   align-items: center; 
   z-index: 1000;
-  background: rgba(2, 6, 23, 0.85); 
+  background: rgba(2, 6, 23, 0.8); 
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-border); 
   transition: 0.3s;
@@ -124,7 +126,6 @@ nav .logo span { color: var(--primary-light); }
 }
 .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
 
-/* Hamburger Button Presisi & Aman dari Terpotong */
 .hamburger { 
   display: none; 
   cursor: pointer; 
@@ -287,13 +288,13 @@ section { padding: 100px 5%; position: relative; }
   color: var(--text-white);
   margin-bottom: 4px;
 }
-.contact-link {
+.item-details a {
   color: var(--text-gray);
   text-decoration: none;
   font-size: 0.9rem;
   transition: 0.3s;
 }
-.contact-link:hover {
+.item-details a:hover {
   color: var(--accent);
 }
 
@@ -385,7 +386,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 
 @media (max-width: 768px) {
   nav {
-    padding: 1rem 1.2rem; /* Memastikan ruang aman di tepi kanan & kiri layar HP */
+    padding: 1rem 5%; /* Menjaga konsistensi ruang padding */
   }
 
   #hero { padding-top: 120px; }
@@ -393,7 +394,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   .hero-img-wrapper { flex: 0 0 auto; width: 100%; max-width: 260px; margin: 0 auto; }
   .hero-img-bg, .hero-img { width: 240px; height: 240px; }
 
-  /* SIDEBAR MOBILE USING TRANSFORM (Bebas dari Masalah Terpotong) */
+  /* SIDEBAR MOBILE USING TRANSFORM */
   .nav-menu { 
     position: fixed; 
     top: 0; 
@@ -406,14 +407,14 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     justify-content: flex-start; 
     padding: 80px 2rem 2rem 2rem;
     gap: 1.8rem;
-    transform: translateX(100%); /* Sembunyikan rapi tanpa memicu scroll horizontal */
+    transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
     border-left: 1px solid var(--glass-border); 
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     z-index: 1100;
   }
   .nav-menu.active { 
-    transform: translateX(0); /* Slide-in Sidebar */
+    transform: translateX(0);
   }
   
   .hamburger { 
@@ -437,16 +438,18 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
+<!-- NAVBAR -->
 <nav>
   <a href="#hero" class="logo">My Portofolio</a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
+<!-- NAV MENU -->
 <ul class="nav-menu">
   <li><a href="#hero">Beranda</a></li>
   <li><a href="#services">Layanan</a></li>
   <li><a href="#about">Tentang</a></li>
-  <li><a href="#portfolio">Portfolio</a></li>
+  <li><a href="#portfolio">Project</a></li>
   <li><a href="#contact">Kontak</a></li>
 </ul>
 
@@ -554,7 +557,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 
 <section id="portfolio">
   <div class="section-header reveal">
-    <h2 class="section-title">Portfolio Terbaru</h2>
+    <h2 class="section-title">Semua Project</h2>
     <div class="section-line"></div>
   </div>
   <div class="portfolio-grid">
@@ -618,7 +621,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         <div class="icon-box"><i class="fas fa-envelope"></i></div>
         <div class="item-details">
           <h5>Email</h5>
-          <a href="mailto:salmanaf083@gmail.com" class="contact-link">
+          <a href="mailto:salmanaf083@gmail.com">
             salmanaf083@gmail.com
           </a>
         </div>
@@ -628,7 +631,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
         <div class="icon-box"><i class="fab fa-instagram"></i></div>
         <div class="item-details">
           <h5>Instagram</h5>
-          <a href="https://instagram.com/sal_frzi" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <a href="https://instagram.com/sal_frzi" target="_blank" rel="noopener noreferrer">
             @sal_frzi
           </a>
         </div>
