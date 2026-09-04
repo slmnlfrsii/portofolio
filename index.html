@@ -6,9 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="My Portfolio">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -105,7 +107,21 @@ nav .logo span { color: var(--primary-light); }
 }
 .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
 
-.hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text-white); }
+/* Hamburger Button Optimized for Android */
+.hamburger { 
+  display: none; 
+  cursor: pointer; 
+  font-size: 1.6rem; 
+  color: var(--text-white); 
+  padding: 8px;
+  border-radius: 8px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+.hamburger:active {
+  transform: scale(0.9);
+}
 
 /* --- 4. HERO SECTION --- */
 #hero { 
@@ -380,7 +396,11 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     z-index: 1100;
   }
   .nav-menu.active { right: 0; }
-  .hamburger { display: block; z-index: 1200; }
+  
+  .hamburger { 
+    display: block; 
+    z-index: 1200; /* Paling atas agar mudah di-tap di Android */
+  }
   
   .timeline::before { left: 20px; }
   .t-item { justify-content: flex-start !important; margin-left: 50px; }
@@ -398,11 +418,13 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
+<!-- NAVBAR -->
 <nav>
   <a href="#hero" class="logo">My Portofolio</a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
+<!-- NAV MENU -->
 <ul class="nav-menu">
   <li><a href="#hero">Beranda</a></li>
   <li><a href="#services">Layanan</a></li>
@@ -684,7 +706,7 @@ window.onscroll = function() {
   });
 };
 
-// 3. NAVBAR TOGGLE & SIDEBAR HANDLER
+// 3. NAVBAR TOGGLE & SIDEBAR HANDLER (OPTIMIZED FOR MOBILE)
 function toggleMenu() {
   const navMenu = document.querySelector('.nav-menu');
   const overlay = document.getElementById('navOverlay');
@@ -693,8 +715,14 @@ function toggleMenu() {
   navMenu.classList.toggle('active');
   overlay.classList.toggle('active');
   
-  icon.classList.toggle('fa-bars');
-  icon.classList.toggle('fa-times');
+  // Toggle Icon Class Animations
+  if(icon.classList.contains('fa-bars')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
+  } else {
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+  }
 }
 
 // Tutup sidebar otomatis saat menu diklik
