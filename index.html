@@ -53,7 +53,7 @@ html, body {
 }
 
 body {
-  /* GRADASI BACKGROUND: navy sangat gelap, glow biru dikurangi */
+  /* GRADASI BACKGROUND */
   background: 
     radial-gradient(ellipse 70% 40% at 50% -10%, rgba(30, 79, 216, 0.07), transparent),
     linear-gradient(160deg, #01040c 0%, #030b18 45%, #051329 75%, #020814 100%);
@@ -101,7 +101,7 @@ body {
   height: 100vh;
   background: rgba(1, 4, 12, 0.7);
   backdrop-filter: blur(4px);
-  z-index: 1050;
+  z-index: 1500;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -137,12 +137,19 @@ nav .logo {
 }
 nav .logo span { color: var(--blue-light); }
 
-.nav-menu { display: flex; gap: 2.5rem; list-style: none; }
+/* NAV MENU DESKTOP BASE */
+.nav-menu { 
+  display: flex; 
+  gap: 2.5rem; 
+  list-style: none; 
+}
 .nav-menu a {
-  text-decoration: none; color: var(--text-gray); font-size: 0.95rem; font-weight: 500;
-  transition: 0.3s; position: relative;
-  display: inline-block;
-  padding: 5px 0;
+  text-decoration: none; 
+  color: var(--text-gray); 
+  font-size: 0.95rem; 
+  font-weight: 500;
+  transition: 0.3s; 
+  position: relative;
 }
 .nav-menu a:hover, .nav-menu a.active { color: var(--text-white); }
 .nav-menu a::after {
@@ -559,7 +566,7 @@ footer {
   .hero-img-wrapper { flex: 0 0 auto; width: 100%; max-width: 260px; margin: 0 auto; }
   .hero-img-bg, .hero-img { width: 240px; height: 240px; }
 
-  /* FIX SIDEBAR MOBILE PERBATASAN Z-INDEX DAN POINTER EVENTS */
+  /* FIX SIDEBAR MOBILE DENGAN HIGHER Z-INDEX KARENA BERDIRI INDEPENDEN */
   .nav-menu { 
     position: fixed; 
     top: 0; 
@@ -576,13 +583,11 @@ footer {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
     border-left: 1px solid var(--glass-border); 
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
-    z-index: 1100;
-    pointer-events: none;
+    z-index: 2000;
   }
   
   .nav-menu.active { 
     transform: translateX(0);
-    pointer-events: auto;
   }
 
   .nav-menu li {
@@ -593,11 +598,12 @@ footer {
     display: block;
     width: 100%;
     font-size: 1.1rem;
+    padding: 8px 0;
   }
   
   .hamburger { 
     display: block; 
-    z-index: 1200; 
+    z-index: 2100; 
   }
   
   .timeline::before { left: 20px; }
@@ -619,14 +625,15 @@ footer {
 <nav>
   <a href="#hero" class="logo">My Portofolio</a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-  <ul class="nav-menu">
-    <li><a href="#hero">Beranda</a></li>
-    <li><a href="#services">Layanan</a></li>
-    <li><a href="#about">Tentang</a></li>
-    <li><a href="#portfolio">Project</a></li>
-    <li><a href="#contact">Kontak</a></li>
-  </ul>
 </nav>
+
+<ul class="nav-menu">
+  <li><a href="#hero">Beranda</a></li>
+  <li><a href="#services">Layanan</a></li>
+  <li><a href="#about">Tentang</a></li>
+  <li><a href="#portfolio">Project</a></li>
+  <li><a href="#contact">Kontak</a></li>
+</ul>
 
 <section id="hero">
   <div class="hero-container">
@@ -724,7 +731,7 @@ footer {
       <div class="t-content">
         <span class="t-date">2023 - 2024</span>
         <h4 class="t-role">UI/UX Developer</h4>
-        <p>Mondesain antarmuka web dan mobile yang responsif serta melakukan prototyping untuk meningkatkan pengalaman pengguna.</p>
+        <p>Mendesain antarmuka web dan mobile yang responsif serta melakukan prototyping untuk meningkatkan pengalaman pengguna.</p>
       </div>
     </div>
   </div>
