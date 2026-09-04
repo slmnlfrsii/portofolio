@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* --- 1. VARIABLES & RESET (DIKEMBALIKAN KE WARNA AWAL 100%) --- */
+/* --- 1. VARIABLES & RESET --- */
 :root {
   --bg-dark: #020617;
   --bg-card: rgba(30, 41, 59, 0.4);
@@ -32,18 +32,20 @@
   box-sizing: border-box; 
 }
 
+/* GRADASI BACKGROUND BODY PERSIS SESUAI FOTO GAMBAR */
 html, body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden !important;
   scroll-behavior: smooth;
-  background-color: var(--bg-dark);
+  background: linear-gradient(135deg, #0b132b 0%, #020617 60%, #070d1e 100%) !important;
+  background-attachment: fixed !important; /* Agar gradasi biru tidak hilang saat discroll */
   color: var(--text-white);
   font-family: 'Outfit', sans-serif;
   line-height: 1.7;
 }
 
-/* --- 2. BACKGROUND & SCROLL BAR (ORBS GRADASI KOMBINASI WARNA) --- */
+/* --- 2. SCROLL BAR & ORBS ORNAMENT --- */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-dark); }
 ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 5px; }
@@ -53,16 +55,17 @@ html, body {
   width: 0%; z-index: 2000; transition: width 0.1s;
 }
 
+/* Efek Cahaya Glow Tambahan untuk Memperkuat Gradasi Biru */
 .bg-gradient-orb {
   position: fixed; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
-  top: -100px; left: -100px; border-radius: 50%; z-index: -2;
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.25), transparent 70%);
+  top: -150px; left: -150px; border-radius: 50%; z-index: -2;
   animation: floatOrb 10s ease-in-out infinite alternate;
 }
 .bg-gradient-orb-2 {
   position: fixed; width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 70%);
-  bottom: -50px; right: -50px; border-radius: 50%; z-index: -2;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+  bottom: -100px; right: -100px; border-radius: 50%; z-index: -2;
   animation: floatOrb 15s ease-in-out infinite alternate-reverse;
 }
 @keyframes floatOrb {
@@ -394,7 +397,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   .hero-img-wrapper { flex: 0 0 auto; width: 100%; max-width: 260px; margin: 0 auto; }
   .hero-img-bg, .hero-img { width: 240px; height: 240px; }
 
-  /* SIDEBAR MOBILE USING TRANSFORM (Mengatasi terpotong di Android) */
+  /* SIDEBAR MOBILE USING TRANSFORM */
   .nav-menu { 
     position: fixed; 
     top: 0; 
@@ -435,7 +438,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 
 <div class="scroll-progress" id="progressBar"></div>
 
-<!-- Background Orbs (Elemen kombinasi warna latar belakang animasi) -->
+<!-- Background Orbs -->
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
@@ -493,7 +496,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <div class="service-card reveal">
       <div class="service-icon"><i class="fab fa-figma"></i></div>
       <h3>UI/UX Design</h3>
-      <p>Merancang wireframe, desain antarmuka (UI), dan prototipe interaktif menggunakan Figma yang berfokus pada kenyamanan pengguna (UX).</p>
+      <p>Mendesain antarmuka (UI), dan prototipe interaktif menggunakan Figma yang berfokus pada kenyamanan pengguna (UX).</p>
     </div>
     <div class="service-card reveal">
       <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
@@ -513,7 +516,6 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
     <div class="bio-card">
       <h3 style="margin-bottom:20px; font-family:'Space Grotesk';">Tentang Saya</h3>
       <p>Saya adalah Lulusan S1 Prodi Sistem Informasi di Universitas Cipasung Tasikmalaya yang berfokus di bidang Frontend Development dan UI/UX Design. Saya menyukai proses pembuatan alur antarmuka pengguna hingga mewujudkannya menjadi website yang fungsional.</p>
-      <p>Fokus saya pada penulisan kode yang rapi, tampilan yang responsif, serta terus mengasah kemampuan teknis untuk siap berkarya secara profesional.</p>
     </div>
 
     <div class="skills-wrapper">
