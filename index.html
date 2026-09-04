@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* --- 1. VARIABLES & RESET --- */
+/* --- 1. VARIABLES & RESET (DIKEMBALIKAN KE WARNA AWAL 100%) --- */
 :root {
   --bg-dark: #020617;
   --bg-card: rgba(30, 41, 59, 0.4);
@@ -43,7 +43,7 @@ html, body {
   line-height: 1.7;
 }
 
-/* --- 2. BACKGROUND & SCROLL BAR --- */
+/* --- 2. BACKGROUND & SCROLL BAR (ORBS GRADASI KOMBINASI WARNA) --- */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-dark); }
 ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 5px; }
@@ -386,7 +386,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 
 @media (max-width: 768px) {
   nav {
-    padding: 1rem 5%; /* Menjaga konsistensi ruang padding */
+    padding: 1rem 5%;
   }
 
   #hero { padding-top: 120px; }
@@ -394,7 +394,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   .hero-img-wrapper { flex: 0 0 auto; width: 100%; max-width: 260px; margin: 0 auto; }
   .hero-img-bg, .hero-img { width: 240px; height: 240px; }
 
-  /* SIDEBAR MOBILE USING TRANSFORM */
+  /* SIDEBAR MOBILE USING TRANSFORM (Mengatasi terpotong di Android) */
   .nav-menu { 
     position: fixed; 
     top: 0; 
@@ -435,12 +435,13 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 
 <div class="scroll-progress" id="progressBar"></div>
 
+<!-- Background Orbs (Elemen kombinasi warna latar belakang animasi) -->
 <div class="bg-gradient-orb"></div>
 <div class="bg-gradient-orb-2"></div>
 
 <!-- NAVBAR -->
 <nav>
-  <a href="#hero" class="logo">My Portofolio</a>
+  <a href="#hero" class="logo">SALMAN<span>.COM</span></a>
   <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
@@ -449,7 +450,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
   <li><a href="#hero">Beranda</a></li>
   <li><a href="#services">Layanan</a></li>
   <li><a href="#about">Tentang</a></li>
-  <li><a href="#portfolio">Project</a></li>
+  <li><a href="#portfolio">Portfolio</a></li>
   <li><a href="#contact">Kontak</a></li>
 </ul>
 
@@ -557,7 +558,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-bo
 
 <section id="portfolio">
   <div class="section-header reveal">
-    <h2 class="section-title">Semua Project</h2>
+    <h2 class="section-title">Portfolio Terbaru</h2>
     <div class="section-line"></div>
   </div>
   <div class="portfolio-grid">
