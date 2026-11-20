@@ -264,6 +264,30 @@ img {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
+
+  .nav-menu {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-left: none !important;
+    transform: none !important;
+    right: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 2rem !important;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
 }
 
 .logo {
@@ -346,7 +370,6 @@ img {
 .hamburger {
   display: none;
 }
-
 /* ==========================================================================
    5. HERO SECTION
    ========================================================================== */
@@ -1340,23 +1363,24 @@ footer {
 .nav-menu {
     position: fixed !important;
     top: 0 !important;
-    right: 0 !important;
+    right: -100% !important;
     left: auto !important;
-    width: min(270px, 80vw) !important;
+    width: min(275px, 82vw) !important;
     height: 100dvh !important;
     background: #041024 !important;
     opacity: 1 !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     filter: none !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
     padding: calc(84px + env(safe-area-inset-top)) 1.5rem 2rem !important;
     gap: 0.5rem !important;
-    transform: translateX(100%) !important;
+    transform: none !important;
     visibility: hidden !important;
-    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.28s ease !important;
+    transition: right 0.28s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.28s ease !important;
     border-left: 1px solid var(--glass-border) !important;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.65) !important;
     z-index: 2500 !important;
@@ -1371,7 +1395,7 @@ footer {
   }
 
   .nav-menu.active {
-    transform: translateX(0) !important;
+    right: 0 !important;
     visibility: visible !important;
     pointer-events: auto !important;
   }
