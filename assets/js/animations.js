@@ -12,7 +12,7 @@
      1. TYPING EFFECT WITH BLINKING CURSOR
      ------------------------------------------------------------------------ */
   const textElement = document.getElementById("typing-text");
-  const words = ["Frontend Developer", "Junior Web Developer"];
+  const words = ["FullStack Developer", "Junior Web Developer"];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
