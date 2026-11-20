@@ -78,60 +78,65 @@
     });
   }
 
-  /* ------------------------------------------------------------------------
+/* ------------------------------------------------------------------------
      3. MOBILE SIDEBAR MENU HANDLER
      ------------------------------------------------------------------------ */
-  const navMenu = document.getElementById("navMenu");
-  const navOverlay = document.getElementById("navOverlay");
-  const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const hamburgerIcon = document.getElementById("hamburgerIcon");
+  const navMenu = document.getElementById('navMenu');
+  const navOverlay = document.getElementById('navOverlay');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const hamburgerIcon = document.getElementById('hamburgerIcon');
 
-let isMenuTransitioning = false;
-
-  function toggleMenu(forceClose = false) {
+  function setMenuState(isOpen) {
     if (!navMenu || !navOverlay || !hamburgerBtn || !hamburgerIcon) return;
 
-    const isOpen = forceClose ? false : !navMenu.classList.contains("active");
-    navMenu.classList.toggle("active", isOpen);
-    navOverlay.classList.toggle("active", isOpen);
-    navOverlay.setAttribute("aria-hidden", String(!isOpen));
-    hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
-    hamburgerIcon.className = isOpen ? "fas fa-xmark" : "fas fa-bars";
-    document.body.style.overflow = isOpen ? "hidden" : "";
+    navMenu.classList.toggle('active', isOpen);
+    navOverlay.classList.toggle('active', isOpen);
+    navOverlay.setAttribute('aria-hidden', String(!isOpen));
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    hamburgerIcon.className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 
-  function handleMenuButtonEvent(e) {
-    if (e.type === "touchstart") {
-      e.preventDefault();
-      isMenuTransitioning = true;
-      toggleMenu();
-      setTimeout(() => {
-        isMenuTransitioning = false;
-      }, 300);
-      return;
-    }
-    if (isMenuTransitioning) return;
-    toggleMenu();
+  function toggleMenu(forceClose = false) {
+    if (!navMenu) return;
+    const nextState = forceClose ? false : !navMenu.classList.contains('active');
+    setMenuState(nextState);
   }
 
   if (hamburgerBtn) {
-    hamburgerBtn.addEventListener("touchstart", handleMenuButtonEvent, { passive: false });
-    hamburgerBtn.addEventListener("click", handleMenuButtonEvent);
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
   }
 
   if (navOverlay) {
-    navOverlay.addEventListener("click", () => toggleMenu(true));
+    navOverlay.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu(true);
+    });
   }
 
   navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      toggleMenu(true);
+    link.addEventListener('click', () => {
+      const targetHref = link.getAttribute('href');
+      setMenuState(false);
+
+      if (targetHref && targetHref.startsWith('#')) {
+        const targetEl = document.querySelector(targetHref);
+        if (targetEl) {
+          setTimeout(() => {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 60);
+        }
+      }
     });
   });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768 && navMenu?.classList.contains("active")) {
-      toggleMenu(true);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu?.classList.contains('active')) {
+      setMenuState(false);
     }
   });
 
