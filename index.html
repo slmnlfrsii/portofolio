@@ -14,13 +14,126 @@
 <style>
   
 /* =========================================
+   MOBILE RESPONSIVE - EXPERIENCE & PROJECT
+   ========================================= */
+
+/* EXPERIENCE - MOBILE: KIRI DAN KANAN SEPERTI DESKTOP */
+@media (max-width: 768px) {
+  .timeline {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Garis tetap di tengah */
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Kartu bergantian kiri dan kanan */
+  .t-item,
+  .t-item:nth-child(odd),
+  .t-item:nth-child(even) {
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 0;
+    display: flex;
+    position: relative;
+  }
+
+  .t-item:nth-child(odd) {
+    justify-content: flex-start !important;
+  }
+
+  .t-item:nth-child(even) {
+    justify-content: flex-end !important;
+  }
+
+  /* Lebar kartu agar tidak melewati layar */
+  .t-content {
+    width: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    padding: 12px;
+    min-width: 0;
+  }
+
+  /* Titik tetap berada di tengah garis */
+  .t-dot {
+    left: 50% !important;
+    top: 20px;
+    transform: translateX(-50%);
+  }
+
+  /* Ukuran teks */
+  .t-date {
+    font-size: 0.7rem;
+  }
+
+  .t-role {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .t-content p {
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 420px) {
+  .t-content {
+    width: calc(50% - 13px);
+    max-width: calc(50% - 13px);
+    padding: 9px;
+  }
+
+  .t-date {
+    font-size: 0.62rem;
+  }
+
+  .t-role {
+    font-size: 0.72rem;
+  }
+
+  .t-content p {
+    font-size: 0.65rem;
+    line-height: 1.45;
+  }
+}
+
+/* HP LAYAR KECIL */
+@media (max-width: 420px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .p-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .p-card img {
+    object-fit: contain;
+  }
+
+  .p-overlay {
+    padding: 6px;
+  }
+
+  .p-overlay h4 {
+    font-size: 0.7rem;
+  }
+}
+
+/* =========================================
    MOBILE COMPACT - ANDROID
    Layanan, Tentang, Keahlian, dan Kontak
    Desktop tidak berubah
    ========================================= */
 
 @media (max-width: 768px) {
-
   /* LAYANAN */
   .services-grid {
     grid-template-columns: 1fr;
@@ -176,7 +289,6 @@
 
 /* HP LAYAR KECIL */
 @media (max-width: 420px) {
-
   /* LAYANAN */
   .service-card {
     padding: 17px 14px;
@@ -264,6 +376,257 @@
     padding: 11px;
   }
 }
+
+/* =========================================
+   MOBILE COMPACT - ANDROID
+   Layanan, Tentang, Keahlian, dan Kontak
+   Desktop tidak berubah
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* LAYANAN */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    padding: 20px 17px;
+    border-radius: 15px;
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .service-card h3 {
+    font-size: 1.08rem;
+    margin-bottom: 7px;
+  }
+
+  .service-card p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  /* TENTANG SAYA */
+  .about-content {
+    gap: 14px;
+  }
+
+  .bio-card {
+    padding: 20px 17px;
+    border-radius: 16px;
+  }
+
+  .bio-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .bio-card p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* BAHASA PEMROGRAMAN & FRAMEWORK */
+  .skills-wrapper {
+    padding: 20px 17px;
+    border-radius: 16px;
+  }
+
+  .skills-wrapper h3 {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .skill-box {
+    padding: 12px 5px;
+    border-radius: 11px;
+    min-width: 0;
+  }
+
+  .skill-box i {
+    font-size: 1.7rem;
+    margin-bottom: 6px;
+  }
+
+  .skill-box span {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  /* KONTAK DAN FORM EMAIL */
+  .contact-wrapper {
+    border-radius: 17px;
+  }
+
+  .contact-left,
+  .contact-right {
+    padding: 21px 17px;
+  }
+
+  .contact-left h3,
+  .contact-right h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .contact-left p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .contact-item {
+    gap: 10px;
+    margin-bottom: 17px;
+  }
+
+  .icon-box {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+    border-radius: 9px;
+  }
+
+  .item-details h5 {
+    font-size: 0.82rem;
+  }
+
+  .item-details a,
+  .item-details span {
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+  }
+
+  .form-group {
+    margin-bottom: 13px;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 9px;
+  }
+
+  textarea.form-control {
+    min-height: 95px;
+  }
+
+  .btn-submit {
+    padding: 12px;
+    font-size: 0.85rem;
+    border-radius: 9px;
+  }
+}
+
+/* HP LAYAR KECIL */
+@media (max-width: 420px) {
+  /* LAYANAN */
+  .service-card {
+    padding: 17px 14px;
+  }
+
+  .service-icon {
+    font-size: 1.75rem;
+  }
+
+  .service-card h3 {
+    font-size: 0.98rem;
+  }
+
+  .service-card p {
+    font-size: 0.77rem;
+  }
+
+  /* TENTANG */
+  .bio-card,
+  .skills-wrapper {
+    padding: 17px 14px;
+  }
+
+  .bio-card h3 {
+    font-size: 1rem;
+  }
+
+  .bio-card p {
+    font-size: 0.77rem;
+    line-height: 1.55;
+  }
+
+  /* KEAHLIAN */
+  .skills-grid {
+    gap: 7px;
+  }
+
+  .skill-box {
+    padding: 10px 3px;
+  }
+
+  .skill-box i {
+    font-size: 1.45rem;
+  }
+
+  .skill-box span {
+    font-size: 0.66rem;
+  }
+
+  /* KONTAK DAN FORM */
+  .contact-left,
+  .contact-right {
+    padding: 18px 14px;
+  }
+
+  .contact-left h3,
+  .contact-right h3 {
+    font-size: 1.08rem;
+  }
+
+  .contact-left p {
+    font-size: 0.76rem;
+  }
+
+  .item-details h5 {
+    font-size: 0.76rem;
+  }
+
+  .item-details a,
+  .item-details span {
+    font-size: 0.72rem;
+  }
+
+  .form-group label {
+    font-size: 0.73rem;
+  }
+
+  .form-control {
+    font-size: 16px;
+    padding: 9px 10px;
+  }
+
+  .btn-submit {
+    font-size: 0.8rem;
+    padding: 11px;
+  }
+}
+
 
 /* --- 1. VARIABLES & RESET --- */
 :root {
