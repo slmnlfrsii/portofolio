@@ -131,10 +131,7 @@
         if (targetEl) {
           e.preventDefault();
           const topOffset = 80;
-          const targetY = Math.max(
-            0,
-            targetEl.getBoundingClientRect().top + window.scrollY - topOffset
-          );
+          const targetY = Math.max(0, targetEl.getBoundingClientRect().top + window.scrollY - topOffset);
           window.scrollTo({ top: targetY, behavior: 'smooth' });
         }
       }
