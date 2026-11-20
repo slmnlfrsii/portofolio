@@ -1,0 +1,174 @@
+/* ==========================================================================
+   ANIMATION SYSTEM (HERO ENTRANCE, FLOAT, CURSOR, STAGGER & TILT)
+   ========================================================================== */
+
+/* 1. Hero Entrance Animation */
+.anim-hero-item {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.anim-hero-item:nth-child(1) {
+  animation-delay: 0.08s;
+}
+.anim-hero-item:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.anim-hero-item:nth-child(3) {
+  animation-delay: 0.28s;
+}
+.anim-hero-item:nth-child(4) {
+  animation-delay: 0.38s;
+}
+.anim-hero-item:nth-child(5) {
+  animation-delay: 0.48s;
+}
+
+.anim-hero-visual {
+  opacity: 0;
+  transform: scale(0.92) translateY(18px);
+  animation: heroVisualIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroVisualIn {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 2. Gentle Floating Profile Photo */
+.hero-img {
+  animation: profileFloat 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes profileFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* 3. Typing Blinking Cursor */
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--blue-light);
+  font-weight: 400;
+  animation: blinkCursor 0.85s steps(1, end) infinite;
+}
+
+@keyframes blinkCursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 4. Staggered Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 5. Micro-Interactions on Icons & Cards */
+.service-card:hover .service-icon {
+  transform: scale(1.08) translateY(-2px);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-icon {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-box:hover i {
+  transform: scale(1.12);
+}
+
+.skill-box i {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.28s ease;
+}
+
+.btn-main,
+.btn-outline,
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-main::after,
+.btn-submit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.btn-main:hover::after,
+.btn-submit:hover::after {
+  left: 140%;
+}
+
+/* Subtle 3D tilt support for pointer devices */
+.tilt-enabled {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* 6. Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .anim-hero-item,
+  .anim-hero-visual {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
