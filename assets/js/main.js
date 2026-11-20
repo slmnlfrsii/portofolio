@@ -113,61 +113,74 @@
   /* ------------------------------------------------------------------------
      4. CONTACT FORM HANDLING
      ------------------------------------------------------------------------ */
-  const contactForm = document.getElementById("contactForm");
-  const toast = document.getElementById("toast");
+const contactForm = document.getElementById('contactForm');
+  const contactSuccessBox = document.getElementById('contactSuccessBox');
+  const sendAnotherBtn = document.getElementById('sendAnotherBtn');
+  const toast = document.getElementById('toast');
 
   function showToast(message) {
     if (!toast) return;
     toast.textContent = message;
-    toast.classList.remove("show");
+    toast.classList.remove('show');
     void toast.offsetWidth;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3200);
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  function setFormSubmittedState(isSubmitted) {
+    if (contactForm) contactForm.hidden = isSubmitted;
+    if (contactSuccessBox) contactSuccessBox.hidden = !isSubmitted;
+  }
+
+  if (sendAnotherBtn) {
+    sendAnotherBtn.addEventListener('click', () => {
+      setFormSubmittedState(false);
+      if (contactForm) {
+        contactForm.reset();
+        const firstInput = contactForm.querySelector('input:not([type="hidden"]), textarea');
+        if (firstInput) firstInput.focus();
+      }
+    });
   }
 
   if (contactForm) {
-    contactForm.addEventListener("submit", async (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const actionUrl = contactForm.getAttribute("action") || "";
+      const actionUrl = contactForm.getAttribute('action') || '';
       const hasExternalEndpoint =
         actionUrl &&
-        actionUrl !== "#" &&
-        !actionUrl.trim().toLowerCase().startsWith("mailto:");
+        actionUrl !== '#' &&
+        !actionUrl.trim().toLowerCase().startsWith('mailto:');
 
       if (!hasExternalEndpoint) {
-        showToast(
-          "Form belum dihubungkan ke endpoint email. Silakan kirim ke salmanaf083@gmail.com",
-        );
+        showToast('Form belum dihubungkan ke endpoint email. Silakan kirim ke salmanaf083@gmail.com');
         return;
       }
 
-      const btn = contactForm.querySelector(".btn-submit");
-      const originalHTML = btn ? btn.innerHTML : "";
+      const btn = contactForm.querySelector('.btn-submit');
+      const originalHTML = btn ? btn.innerHTML : '';
       if (btn) {
-        btn.textContent = "Mengirim...";
+        btn.textContent = 'Mengirim...';
         btn.disabled = true;
       }
 
       try {
         const formData = new FormData(contactForm);
         const response = await fetch(actionUrl, {
-          method: contactForm.method || "POST",
+          method: contactForm.method || 'POST',
           body: formData,
-          headers: { Accept: "application/json" },
+          headers: { Accept: 'application/json' },
         });
 
         if (response.ok) {
-          showToast("Pesan berhasil dikirim ke email!");
           contactForm.reset();
+          setFormSubmittedState(true);
+          showToast('Pesan berhasil dikirim ke email!');
         } else {
-          showToast(
-            "Gagal mengirim pesan. Silakan coba lagi atau email langsung.",
-          );
+          showToast('Gagal mengirim pesan. Silakan coba lagi atau email langsung.');
         }
       } catch (err) {
-        showToast(
-          "Koneksi bermasalah. Silakan coba lagi atau kirim ke salmanaf083@gmail.com",
-        );
+        showToast('Koneksi bermasalah. Silakan coba lagi atau kirim ke salmanaf083@gmail.com');
       } finally {
         if (btn) {
           btn.innerHTML = originalHTML;
