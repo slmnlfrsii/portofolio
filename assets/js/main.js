@@ -118,28 +118,34 @@
     });
   }
 
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      const targetHref = link.getAttribute('href');
+  if (navMenu) {
+    navMenu.addEventListener('click', (e) => {
+      const clickedLink = e.target.closest('a[href^="#"]');
+      if (!clickedLink) return;
+
+      const targetHref = clickedLink.getAttribute('href');
       setMenuState(false);
 
-      if (targetHref && targetHref.startsWith('#')) {
+      if (targetHref && targetHref.length > 1) {
         const targetEl = document.querySelector(targetHref);
         if (targetEl) {
-          setTimeout(() => {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 60);
+          e.preventDefault();
+          const topOffset = 80;
+          const targetY = Math.max(
+            0,
+            targetEl.getBoundingClientRect().top + window.scrollY - topOffset
+          );
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
         }
       }
     });
-  });
+  }
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768 && navMenu?.classList.contains('active')) {
       setMenuState(false);
     }
   });
-
   /* ------------------------------------------------------------------------
      4. CONTACT FORM HANDLING
      ------------------------------------------------------------------------ */
