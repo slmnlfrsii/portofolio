@@ -86,22 +86,47 @@
   const hamburgerBtn = document.getElementById("hamburgerBtn");
   const hamburgerIcon = document.getElementById("hamburgerIcon");
 
+let isMenuTransitioning = false;
+
   function toggleMenu(forceClose = false) {
     if (!navMenu || !navOverlay || !hamburgerBtn || !hamburgerIcon) return;
 
     const isOpen = forceClose ? false : !navMenu.classList.contains("active");
     navMenu.classList.toggle("active", isOpen);
     navOverlay.classList.toggle("active", isOpen);
+    navOverlay.setAttribute("aria-hidden", String(!isOpen));
     hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
     hamburgerIcon.className = isOpen ? "fas fa-xmark" : "fas fa-bars";
     document.body.style.overflow = isOpen ? "hidden" : "";
   }
 
-  if (hamburgerBtn) hamburgerBtn.addEventListener("click", () => toggleMenu());
-  if (navOverlay) navOverlay.addEventListener("click", () => toggleMenu(true));
+  function handleMenuButtonEvent(e) {
+    if (e.type === "touchstart") {
+      e.preventDefault();
+      isMenuTransitioning = true;
+      toggleMenu();
+      setTimeout(() => {
+        isMenuTransitioning = false;
+      }, 300);
+      return;
+    }
+    if (isMenuTransitioning) return;
+    toggleMenu();
+  }
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("touchstart", handleMenuButtonEvent, { passive: false });
+    hamburgerBtn.addEventListener("click", handleMenuButtonEvent);
+  }
+
+  if (navOverlay) {
+    navOverlay.addEventListener("click", () => toggleMenu(true));
+  }
 
   navLinks.forEach((link) => {
-    link.addEventListener("click", () => toggleMenu(true));
+    link.addEventListener("click", () => {
+      toggleMenu(true);
+    });
   });
 
   window.addEventListener("resize", () => {
